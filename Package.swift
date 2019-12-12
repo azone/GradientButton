@@ -21,6 +21,5 @@ let package = Package(
         .target(
             name: "GradientButton",
             dependencies: []),
-    ],
-    swiftLanguageVersions: [.v5.1]
+    ]
 )
