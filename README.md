@@ -55,13 +55,15 @@ dependencies: [
 
 ```swift
 let button = GradientButton(type: .system)
+// set gradient for normal state
 let startColor = #colorLiteral(red:1.0, green:0.5647, blue:0.0, alpha:1.0)
 let endColor: #colorLiteral(red:1.0, green:0.3137, blue:0.0, alpha:1.0)
 let colors = [startColor, endColor]
 let gradient = GradientButton.Gradient(colors: colors)
 button.setGradient(gradient, for: .normal)
 
-var highlight = GradientButton.Gradient(colors: colors.map({ $0.withAlphaComponent(0.8) }))
+// set gradient for highlight state
+let highlight = GradientButton.Gradient(colors: colors.map({ $0.withAlphaComponent(0.8) }))
 button.setGradient(highlight, for: .highlighted)
 
 button.setTitle("Button with gradient", for: .normal)
@@ -71,20 +73,24 @@ button.setTitle("Button with gradient", for: .normal)
 
 ```swift
 let button = GradientButton(type: .system)
+// set gradient for normal state
 let startColor = #colorLiteral(red:1.0, green:0.5647, blue:0.0, alpha:1.0)
 let endColor: #colorLiteral(red:1.0, green:0.3137, blue:0.0, alpha:1.0)
 let colors = [startColor, endColor]
 let gradient = GradientButton.Gradient(colors: colors)
 button.setGradient(gradient, for: .normal)
 
+// set gradient for highlight state
 var highlight = GradientButton.Gradient(colors: colors.reversed())
 button.setGradient(highlight, for: .highlighted)
 
+// set shadow for normal state
 let shadow = NSShadow()
 shadow.shadowColor = startColor
 shadow.shadowBlurRadius = 8
 button.setShadow(shadow, for: .normal)
 
+// set shadow for highlight state
 let highlightShadow = NSShadow()
 highlightShadow.shadowColor = endColor
 highlightShadow.shadowBlurRadius = 8
@@ -108,8 +114,10 @@ button.setBorder(border, for: .normal)
 // border for highlight state
 let highLightBorder = GradientButton.Border(color: #colorLiteral(red:1.0, green:0.3137, blue:0.0, alpha:1.0))
 button.setBorder(highLightBorder, for: .highlighted)
-        
+
+// set background color for normal state
 button.setBackgroundColor(.white, for: .normal)
+// set background color for highlight state
 button.setBackgroundColor(#colorLiteral(red:1.0, green:0.3137, blue:0.0, alpha:1.0), for: .highlighted)
 
 button.setTitleColor(#colorLiteral(red:1.0, green:0.5647, blue:0.0, alpha:1.0), for: .normal)
@@ -125,6 +133,7 @@ button.setTitle("Button with border and background color", for: .normal)
 *网上搜了一下说是使用 @objc dynamic，我试了一下也是不行的。即使行，方法就没有办法了。我也看了官方文档，说是方法名需要满足一定的规则即可支持，我定义的方法已经是文档的规则了，但是...*
 
 ```swift
+// set default appearance for global
 let appreance = GradientButton.defaultAppearance
 let startColor = #colorLiteral(red:0.1647, green:0.5137, blue:0.9529, alpha:1.0)
 let endColor = #colorLiteral(red:0.3294, green:0.4784, blue:0.9804, alpha:1.0)
@@ -137,7 +146,7 @@ let highlightGradient = GradientButton.Gradient(colors: [highlightStartColor, hi
 appreance.setGradient(highlightGradient, for: .highlighted)
 
 let button = GradientButton(type: .system)
-button1.setTitle("Button with default appreance", for: .normal)
+button1.setTitle("Button with default appearance", for: .normal)
 ```
 
 最终效果如 Demo gif 所示
