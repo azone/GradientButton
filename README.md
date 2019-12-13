@@ -151,6 +151,10 @@ button1.setTitle("Button with default appearance", for: .normal)
 
 最终效果如 Demo gif 所示
 
+### 其它设置
+
+除了以上属性外，还可以设置按钮的圆角半径，默认为按钮高度的一般。渐变除了可以设置渐变色之外，还可以设置渐变颜色位置，已经颜色的开始点和结束点等。
+
 ## 许可
 
 GradientButton 是根据 MIT 许可发布的。详情请看 [LICENSE](https://github.com/azone/GradientButton/blob/master/LICENSE)。
