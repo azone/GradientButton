@@ -15,6 +15,7 @@ Pod::Spec.new do |spec|
 
   spec.author             = { "Yozone Wang" => "wangyaozh@gmail.com" }
   
+  spec.swift_version = "5.1"
   spec.ios.deployment_target = "8.0"
   spec.tvos.deployment_target = "9.0"
 
