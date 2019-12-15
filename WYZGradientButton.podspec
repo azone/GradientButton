@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "WYZGradientButton"
-  spec.version      = "0.1.0"
+  spec.version      = "0.2.0"
   spec.summary      = "Gradient button for iOS written in Swift"
 
   spec.description  = <<-DESC
