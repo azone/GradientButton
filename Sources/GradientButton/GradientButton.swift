@@ -2,7 +2,16 @@ import UIKit
 
 open class GradientButton: UIButton {
     @IBInspectable
-    open var cornerRadius: CGFloat = Appearance.cornerRadiusHalfHeight
+    open var cornerRadius: CGFloat = Appearance.cornerRadiusHalfHeight {
+        didSet {
+            gradientLayer.cornerRadius = cornerRadius
+        }
+    }
+
+    open var enableCustomAnimations: Bool {
+        get { gradientLayer.enableCustomAnimations }
+        set { gradientLayer.enableCustomAnimations = newValue }
+    }
 
     public static var defaultAppearance = Appearance()
 

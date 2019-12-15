@@ -42,7 +42,7 @@ Swift 包设置好后，在 `Package.swift` 中添加依赖：
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/azone/GradientButton.git", from: "0.1.0")
+    .package(url: "https://github.com/azone/GradientButton.git", from: "0.2.0")
 ]
 ```
 
@@ -126,6 +126,22 @@ button.setTitleColor(.white, for: .highlighted)
 button.setTitle("Button with border and background color", for: .normal)
 ```
 
+### 设置纵向渐变
+
+```swift
+let button = GradientButton(type: .system)
+
+let startColor = #colorLiteral(red:1.0, green:0.5647, blue:0.0, alpha:1.0)
+let endColor = #colorLiteral(red:1.0, green:0.3137, blue:0.0, alpha:1.0)
+let colors = [startColor, endColor]
+let gradient = GradientButton.Gradient(colors: colors, endPoint: .init(x: 0, y: 1))
+button.setGradient(gradient, for: .normal)
+
+var highlight = gradient
+highlight.colors = colors.map({ $0.withAlphaComponent(0.8) })
+button.setGradient(highlight, for: .highlighted)
+```
+
 ### 嫌设置的太麻烦？GradientButton 提供了全局设置的支持
 
 本来想使用 `UIAppearance` 来支持的，但是经过多次验证发现 Swift 下无法提供支持，如果想支持必须使用 `Objective-C` 来写，或者我使用的方式不对？还请各位大牛给与指点！
@@ -150,10 +166,6 @@ button1.setTitle("Button with default appearance", for: .normal)
 ```
 
 最终效果如 Demo gif 所示
-
-### 其它设置
-
-除了以上属性外，还可以设置按钮的圆角半径，默认为按钮高度的一般。渐变除了可以设置渐变色之外，还可以设置渐变颜色位置，已经颜色的开始点和结束点等。
 
 ## 许可
 

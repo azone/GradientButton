@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
 
         let button1 = gradientButton()
-        button1.setTitle("Button with default appreance", for: .normal)
+        button1.setTitle("Button with default appearance", for: .normal)
         buttonStackView.addArrangedSubview(button1)
 
         let button2 = button(with: #colorLiteral(red:1.0, green:0.5647, blue:0.0, alpha:1.0), endColor: #colorLiteral(red:1.0, green:0.3137, blue:0.0, alpha:1.0),
@@ -40,6 +40,11 @@ class ViewController: UIViewController {
         let button4 = borderButton()
         button4.setTitle("Button with border and background color", for: .normal)
         buttonStackView.addArrangedSubview(button4)
+
+        let button5 = verticalGradientButton()
+        button5.cornerRadius = 6
+        button5.setTitle("Button with vertical gradient", for: .normal)
+        buttonStackView.addArrangedSubview(button5)
     }
 
     private func borderButton() -> GradientButton {
@@ -97,6 +102,24 @@ class ViewController: UIViewController {
             highlightShadow.shadowBlurRadius = 8
             button.setShadow(highlightShadow, for: .highlighted)
         }
+
+        return button
+    }
+
+    private func verticalGradientButton() -> GradientButton {
+        let button = gradientButton()
+        let startColor = #colorLiteral(red:1.0, green:0.5647, blue:0.0, alpha:1.0)
+        let endColor = #colorLiteral(red:1.0, green:0.3137, blue:0.0, alpha:1.0)
+        let colors = [startColor, endColor]
+        let gradient = GradientButton.Gradient(colors: colors, endPoint: .init(x: 0, y: 1))
+        button.setGradient(gradient, for: .normal)
+
+        var highlight = gradient
+        highlight.colors = colors.map({ $0.withAlphaComponent(0.8) })
+        button.setGradient(highlight, for: .highlighted)
+
+        button.cornerRadius = 6
+        button.setTitle("Button with vertical gradient", for: .normal)
 
         return button
     }
