@@ -7,37 +7,39 @@
 
 import UIKit
 
+extension UIControl.State: Hashable {}
+
 public extension GradientButton {
     class Appearance {
         public static let cornerRadiusHalfHeight: CGFloat = -1
         public var cornerRadius: CGFloat = cornerRadiusHalfHeight
 
-        private var gradientsForState = [UInt: Gradient]()
-        private var bordersForState = [UInt: Border]()
-        private var shadowsForState = [UInt: NSShadow]()
+        private var gradientsForState = [UIControl.State: Gradient]()
+        private var bordersForState = [UIControl.State: Border]()
+        private var shadowsForState = [UIControl.State: NSShadow]()
 
         public func setGradient(_ gradient: Gradient?, for state: UIControl.State) {
-            gradientsForState[state.rawValue] = gradient
+            gradientsForState[state] = gradient
         }
 
         public func gradient(for state: UIControl.State) -> Gradient? {
-            gradientsForState[state.rawValue]
+            gradientsForState[state]
         }
 
         public func setBorder(_ border: Border?, for state: UIControl.State) {
-            bordersForState[state.rawValue] = border
+            bordersForState[state] = border
         }
 
         public func border(for state: UIControl.State) -> Border? {
-            bordersForState[state.rawValue]
+            bordersForState[state]
         }
 
         public func setShadow(_ shadow: NSShadow?, for state: UIControl.State) {
-            shadowsForState[state.rawValue] = shadow
+            shadowsForState[state] = shadow
         }
 
         public func shadow(for state: UIControl.State) -> NSShadow? {
-            shadowsForState[state.rawValue]
+            shadowsForState[state]
         }
     }
 }
